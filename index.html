@@ -75,20 +75,27 @@
             font-size: 1rem;
         }
 
-        .footer {
+        nav {
+            background-color: #1E1E1E;
+            padding: 10px;
             text-align: center;
-            background-color: #222;
-            padding: 20px;
-            margin-top: 50px;
         }
 
-        a {
+        nav a {
             color: #FFD700;
-            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
         }
 
-        a:hover {
+        nav a:hover {
             text-decoration: underline;
+        }
+
+        footer {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 20px;
+            text-align: center;
         }
 
         .highlight {
@@ -117,14 +124,24 @@
 
 <body>
 
-    <header class="intro">
-        <div class="container">
-            <h1>NovaXP OS - The Future of Operating Systems</h1>
-            <p>Your new favorite operating system designed with speed, style, and ease of use.</p>
-        </div>
-    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#installation">Installation</a>
+        <a href="#support">Support</a>
+        <a href="#contribute">Contribute</a>
+    </nav>
 
-    <section>
+    <section id="home">
+        <header class="intro">
+            <div class="container">
+                <h1>NovaXP OS - The Future of Operating Systems</h1>
+                <p>Your new favorite operating system designed with speed, style, and ease of use.</p>
+            </div>
+        </header>
+    </section>
+
+    <section id="features">
         <div class="container">
             <h2>Key Features</h2>
             <div class="feature-list">
@@ -148,7 +165,7 @@
         </div>
     </section>
 
-    <section>
+    <section id="installation">
         <div class="container">
             <h2>Installation Guide</h2>
             <p>Follow these steps to install NovaXP OS on your system:</p>
@@ -158,30 +175,53 @@
                 <li>Choose your desired partition and wait for the installation to complete.</li>
                 <li>After installation, reboot and enjoy your new NovaXP experience!</li>
             </ul>
+            <h3>System Requirements</h3>
+            <ul>
+                <li>CPU: 1 GHz or higher</li>
+                <li>RAM: 2 GB or higher</li>
+                <li>Storage: 5 GB free space</li>
+                <li>Graphics: Compatible with modern GPUs</li>
+            </ul>
         </div>
     </section>
 
-    <section>
+    <section id="support">
         <div class="container">
-            <h2>Sample Code Snippet</h2>
-            <p>Here’s a quick example of how you can use the NovaXP APIs:</p>
-            <div class="code-snippet">
-                <code>
-                    public class SystemInfo {<br>
-                    &nbsp;&nbsp;public static void DisplayInfo() {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("NovaXP OS - Version 1.0");<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Built with Cosmos.");<br>
-                    &nbsp;&nbsp;}<br>
-                    }
-                </code>
-            </div>
+            <h2>Support</h2>
+            <p>If you run into any issues with NovaXP OS, here are some solutions:</p>
+            <h3>Troubleshooting</h3>
+            <ul>
+                <li><strong>Installation Failed:</strong> Ensure your system meets the minimum requirements and try again.</li>
+                <li><strong>File Explorer Not Responding:</strong> Restart the OS and try opening File Explorer again.</li>
+                <li><strong>Performance Issues:</strong> Close any unnecessary applications to free up system resources.</li>
+            </ul>
+            <p>For further assistance, reach out on our <a href="#">Support Forum</a>.</p>
         </div>
     </section>
 
-    <footer class="footer">
+    <section id="contribute">
         <div class="container">
-            <p>NovaXP OS - © 2025. All rights reserved.</p>
-            <p>Contribute to the project on <a href="https://github.com/YourUsername/NovaXP">GitHub</a>.</p>
+            <h2>Contribute</h2>
+            <p>NovaXP OS is open-source! We welcome contributions from developers and enthusiasts. Here's how you can get involved:</p>
+            <h3>How to Contribute</h3>
+            <ol>
+                <li>Fork the repository on <a href="https://github.com/YourUsername/NovaXP">GitHub</a>.</li>
+                <li>Make your changes and improvements.</li>
+                <li>Submit a pull request with a clear description of your changes.</li>
+            </ol>
+            <h3>Contribution Guidelines</h3>
+            <ul>
+                <li>Ensure your code follows the existing style guide.</li>
+                <li>Test all new features thoroughly before submitting your pull request.</li>
+                <li>Respect the work of others and contribute constructively.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 NovaXP OS. All rights reserved.</p>
+            <p>Visit our <a href="https://github.com/YourUsername/NovaXP">GitHub Repository</a> for more details.</p>
         </div>
     </footer>
 
