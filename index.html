@@ -2,103 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nova XP - Future of Retro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova XP - Login & Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      height: 100vh;
       background: linear-gradient(135deg, #1e3c72, #2a5298);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .container {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(12px);
-      border-radius: 16px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.3);
-      padding: 40px;
-      max-width: 600px;
-      text-align: center;
-      animation: pop 0.8s ease;
-    }
-
-    h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    p {
-      font-size: 1.2em;
-      opacity: 0.9;
-      margin-bottom: 30px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 14px 28px;
-      font-size: 1em;
-      font-weight: bold;
-      border-radius: 8px;
-      background: linear-gradient(to right, #00f2fe, #4facfe);
-      color: #003366;
-      text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    .button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-    }
-
-    .version {
-      margin-top: 20px;
-      font-size: 0.9em;
-      opacity: 0.6;
-    }
-
-    @keyframes pop {
-      0% {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    footer {
-      position: absolute;
-      bottom: 20px;
-      font-size: 0.8em;
-      opacity: 0.4;
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>Nova XP</h1>
-    <p>The future of retro computing.  
-       A modern OS with XP soul built from scratch.</p>
-   <a href="https://www.mediafire.com/file/0py2ektcqgesuqg/NovaXP.iso/" class="button" target="_blank">⬇️ Download ISO</a>
+<body class="flex items-center justify-center min-h-screen">
 
-    <div class="version">v1.0 • Cosmos-powered</div>
+  <div class="max-w-lg w-full bg-white rounded-lg shadow-lg p-8">
+    <!-- Login Form -->
+    <div class="text-center">
+      <h2 class="text-4xl font-semibold text-blue-700 mb-6">Nova XP</h2>
+      <p class="text-gray-500 mb-6">Log in to your account</p>
+
+      <!-- Login Form -->
+      <form id="loginForm">
+        <div class="mb-4">
+          <input type="email" id="loginEmail" placeholder="Email Address" class="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+        </div>
+        <div class="mb-6">
+          <input type="password" id="loginPassword" placeholder="Password" class="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+        </div>
+        <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">Log In</button>
+      </form>
+
+      <p class="mt-4 text-sm text-gray-500">
+        Don't have an account? <a href="javascript:void(0)" onclick="showRegisterForm()" class="text-blue-600 hover:underline">Register here</a>
+      </p>
+    </div>
+
+    <!-- Registration Form (Hidden by default) -->
+    <div id="registerForm" class="hidden mt-8">
+      <h3 class="text-2xl text-blue-700 mb-4 text-center">Create your account</h3>
+
+      <form>
+        <div class="mb-4">
+          <input type="text" id="registerUsername" placeholder="Username" class="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+        </div>
+        <div class="mb-4">
+          <input type="email" id="registerEmail" placeholder="Email Address" class="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+        </div>
+        <div class="mb-6">
+          <input type="password" id="registerPassword" placeholder="Password" class="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+        </div>
+        <button type="submit" class="w-full py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-300">Register</button>
+      </form>
+
+      <p class="mt-4 text-sm text-gray-500">
+        Already have an account? <a href="javascript:void(0)" onclick="showLoginForm()" class="text-blue-600 hover:underline">Log in here</a>
+      </p>
+    </div>
   </div>
-  <footer>&copy; 2025 Nova XP. Built with love. Not affiliated with Microsoft.</footer>
+
+  <script>
+    // Toggle between Login and Registration forms
+    function showRegisterForm() {
+      document.getElementById("registerForm").classList.remove("hidden");
+      document.getElementById("loginForm").classList.add("hidden");
+    }
+
+    function showLoginForm() {
+      document.getElementById("loginForm").classList.remove("hidden");
+      document.getElementById("registerForm").classList.add("hidden");
+    }
+  </script>
+  
 </body>
 </html>
