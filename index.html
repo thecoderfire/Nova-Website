@@ -1,193 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova XP - Login to Download</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #282c34;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .form-container {
-      background-color: #333;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      width: 400px;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #444;
-      background-color: #555;
-      color: white;
-    }
-    .btn {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px;
-      border: none;
-      width: 100%;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    .btn:hover {
-      background-color: #45a049;
-    }
-    .switch-link {
-      color: #4CAF50;
-      text-align: center;
-      display: block;
-      margin-top: 10px;
-    }
-    .nova-ui {
-      display: none;
-      text-align: center;
-    }
-    .nova-ui h1 {
-      color: white;
-    }
-    .btn-logout {
-      background-color: #FF6347;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .btn-logout:hover {
-      background-color: #e55a46;
-    }
-    .btn-download {
-      background-color: #1E90FF;
-      color: white;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 18px;
-    }
-    .btn-download:hover {
-      background-color: #4682B4;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NovaXP OS - Official Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            color: #FFD700;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 30px;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        section {
+            margin: 20px 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro {
+            text-align: center;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feature-item {
+            background-color: #1E1E1E;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-item h4 {
+            color: #FFD700;
+        }
+
+        .feature-item p {
+            color: #E0E0E0;
+            font-size: 1rem;
+        }
+
+        .footer {
+            text-align: center;
+            background-color: #222;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #FFD700;
+        }
+
+        .code-snippet {
+            background-color: #1C1C1C;
+            color: #E0E0E0;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .code-snippet code {
+            color: #FFD700;
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- Login/Register Form -->
-  <div class="form-container" id="authFormContainer">
-    <h2 id="formTitle">Login to Nova XP</h2>
-    <form id="authForm">
-      <input type="text" id="username" placeholder="Username" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit" class="btn">Login</button>
-    </form>
-    <p class="switch-link">
-      Don't have an account? <a href="javascript:void(0)" onclick="showRegisterForm()">Register here</a>
-    </p>
-  </div>
+    <header class="intro">
+        <div class="container">
+            <h1>NovaXP OS - The Future of Operating Systems</h1>
+            <p>Your new favorite operating system designed with speed, style, and ease of use.</p>
+        </div>
+    </header>
 
-  <!-- Nova XP UI -->
-  <div class="nova-ui" id="novaUiContainer">
-    <h1>Welcome to Nova XP</h1>
-    <p>Hello, <strong id="welcomeUser"></strong>!</p>
-    <button class="btn-download" onclick="downloadISO()">Download Nova XP ISO</button>
-    <button class="btn-logout" onclick="logout()">Logout</button>
-  </div>
+    <section>
+        <div class="container">
+            <h2>Key Features</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h4>Modern User Interface</h4>
+                    <p>With a sleek, Windows XP-inspired theme, NovaXP offers an immersive and intuitive interface.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Draggable Windows</h4>
+                    <p>Enjoy the flexibility of dragging windows across your screen, just like the classic desktop experience.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Taskbar with App Management</h4>
+                    <p>Easily manage your open applications with a taskbar that supports app reopening and system notifications.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>File Explorer</h4>
+                    <p>Explore and manage files effortlessly with a modern and responsive file manager integrated into the OS.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Function to show the registration form
-    function showRegisterForm() {
-      document.getElementById('formTitle').textContent = "Register for Nova XP";
-      const authForm = document.getElementById('authForm');
-      authForm.querySelector('button').textContent = 'Register';
-      authForm.onsubmit = registerUser; // Switch form action to registration
-    }
+    <section>
+        <div class="container">
+            <h2>Installation Guide</h2>
+            <p>Follow these steps to install NovaXP OS on your system:</p>
+            <ul>
+                <li>Download the installer from the official <a href="#">GitHub page</a>.</li>
+                <li>Run the setup and follow the on-screen instructions.</li>
+                <li>Choose your desired partition and wait for the installation to complete.</li>
+                <li>After installation, reboot and enjoy your new NovaXP experience!</li>
+            </ul>
+        </div>
+    </section>
 
-    // Handle user registration
-    function registerUser(event) {
-      event.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+    <section>
+        <div class="container">
+            <h2>Sample Code Snippet</h2>
+            <p>Here’s a quick example of how you can use the NovaXP APIs:</p>
+            <div class="code-snippet">
+                <code>
+                    public class SystemInfo {<br>
+                    &nbsp;&nbsp;public static void DisplayInfo() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("NovaXP OS - Version 1.0");<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Built with Cosmos.");<br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </code>
+            </div>
+        </div>
+    </section>
 
-      if (localStorage.getItem(username)) {
-        alert("User already exists! Please log in.");
-        return;
-      }
-
-      localStorage.setItem(username, password);
-      alert("Registration successful! You can now log in.");
-      showLoginForm();
-    }
-
-    // Show login form
-    function showLoginForm() {
-      document.getElementById('formTitle').textContent = "Login to Nova XP";
-      const authForm = document.getElementById('authForm');
-      authForm.querySelector('button').textContent = 'Login';
-      authForm.onsubmit = loginUser; // Switch form action to login
-    }
-
-    // Handle user login
-    function loginUser(event) {
-      event.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-
-      const storedPassword = localStorage.getItem(username);
-
-      if (storedPassword === password) {
-        localStorage.setItem('loggedInUser', username); // Store logged in user
-        showNovaXPUI(username); // Show Nova XP UI
-      } else {
-        alert("Invalid credentials. Please try again.");
-      }
-    }
-
-    // Show Nova XP UI
-    function showNovaXPUI(username) {
-      // Hide login/register form
-      document.getElementById('authFormContainer').style.display = 'none';
-      // Show Nova XP UI
-      document.getElementById('novaUiContainer').style.display = 'block';
-      // Set welcome username
-      document.getElementById('welcomeUser').textContent = username;
-    }
-
-    // Check if already logged in
-    const loggedInUser = localStorage.getItem('loggedInUser');
-    if (loggedInUser) {
-      showNovaXPUI(loggedInUser); // If logged in, show Nova XP UI directly
-    }
-
-    // Download ISO file (simulated)
-    function downloadISO() {
-      window.location.href = "https://www.mediafire.com/file/0py2ektcqgesuqg/NovaXP.iso/"; // Replace with your Mediafire link
-    }
-
-    // Logout function
-    function logout() {
-      localStorage.removeItem('loggedInUser');
-      // Show login/register form again
-      document.getElementById('authFormContainer').style.display = 'block';
-      document.getElementById('novaUiContainer').style.display = 'none';
-    }
-  </script>
+    <footer class="footer">
+        <div class="container">
+            <p>NovaXP OS - © 2025. All rights reserved.</p>
+            <p>Contribute to the project on <a href="https://github.com/YourUsername/NovaXP">GitHub</a>.</p>
+        </div>
+    </footer>
 
 </body>
+
 </html>
