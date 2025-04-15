@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova XP - Login / Register</title>
+  <title>Nova XP - Login to Download</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -54,7 +54,6 @@
       display: block;
       margin-top: 10px;
     }
-    /* Nova XP UI */
     .nova-ui {
       display: none;
       text-align: center;
@@ -73,6 +72,18 @@
     }
     .btn-logout:hover {
       background-color: #e55a46;
+    }
+    .btn-download {
+      background-color: #1E90FF;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .btn-download:hover {
+      background-color: #4682B4;
     }
   </style>
 </head>
@@ -95,6 +106,7 @@
   <div class="nova-ui" id="novaUiContainer">
     <h1>Welcome to Nova XP</h1>
     <p>Hello, <strong id="welcomeUser"></strong>!</p>
+    <button class="btn-download" onclick="downloadISO()">Download Nova XP ISO</button>
     <button class="btn-logout" onclick="logout()">Logout</button>
   </div>
 
@@ -161,6 +173,11 @@
     const loggedInUser = localStorage.getItem('loggedInUser');
     if (loggedInUser) {
       showNovaXPUI(loggedInUser); // If logged in, show Nova XP UI directly
+    }
+
+    // Download ISO file (simulated)
+    function downloadISO() {
+      window.location.href = "https://www.mediafire.com/file/your-iso-link"; // Replace with your Mediafire link
     }
 
     // Logout function
