@@ -14,6 +14,7 @@
             color: #e0e0e0;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -25,6 +26,8 @@
             font-size: 3rem;
             margin-top: 50px;
             text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
         }
 
         h2 {
@@ -32,11 +35,15 @@
             margin-top: 30px;
             border-bottom: 2px solid #FFD700;
             padding-bottom: 5px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 0.5s;
         }
 
         h3 {
             font-size: 1.5rem;
             margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 1s;
         }
 
         section {
@@ -57,6 +64,8 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 1.5s;
         }
 
         .feature-item {
@@ -64,6 +73,11 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: scale(1.05);
         }
 
         .feature-item h4 {
@@ -79,16 +93,24 @@
             background-color: #1E1E1E;
             padding: 10px;
             text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 0.2s;
         }
 
         nav a {
             color: #FFD700;
             margin: 0 15px;
             font-size: 1.2rem;
+            text-decoration: none;
         }
 
         nav a:hover {
             text-decoration: underline;
+            animation: pulse 1s infinite;
         }
 
         footer {
@@ -96,6 +118,8 @@
             color: #e0e0e0;
             padding: 20px;
             text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 2s;
         }
 
         .highlight {
@@ -118,6 +142,30 @@
 
         .code-snippet code {
             color: #FFD700;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700;
+            }
+
+            50% {
+                text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+            }
+
+            100% {
+                text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700;
+            }
         }
     </style>
 </head>
