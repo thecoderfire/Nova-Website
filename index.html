@@ -5,6 +5,10 @@
   <title>NovaXP | The Future OS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
@@ -45,14 +49,22 @@
       animation: glow 2s ease-in-out infinite alternate;
     }
 
+    nav {
+      display: flex;
+    }
+
     nav a {
       color: #fff;
       margin-left: 20px;
       text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 10px;
       transition: 0.3s;
     }
 
     nav a:hover {
+      background: #00ffff22;
       color: #00ffff;
     }
 
@@ -62,7 +74,7 @@
     }
 
     section {
-      padding: 120px 40px 80px;
+      padding: 140px 40px 80px;
       min-height: 100vh;
       animation: fadeIn 1s ease forwards;
       opacity: 0;
@@ -154,6 +166,22 @@
       background: #111;
       color: #aaa;
     }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      nav a {
+        margin: 5px 10px 0 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -163,7 +191,7 @@
       <a href="#about">About</a>
       <a href="#features">Features</a>
       <a href="#install">Install</a>
-      <a href="#store">App Store</a>
+      <a href="#store">Store</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -224,6 +252,7 @@
   </footer>
 
   <script>
+    // Scroll reveal effect
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
