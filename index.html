@@ -1,278 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NovaXP OS - Official Documentation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NovaXP | Next-Gen OS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        h1, h2, h3 {
-            color: #FFD700;
-            font-family: 'Roboto', sans-serif;
-        }
+    html, body {
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(to bottom, #1e1e2f, #2a2a4f);
+      color: white;
+      overflow-x: hidden;
+    }
 
-        h1 {
-            font-size: 3rem;
-            margin-top: 50px;
-            text-align: center;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-        }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
 
-        h2 {
-            font-size: 2rem;
-            margin-top: 30px;
-            border-bottom: 2px solid #FFD700;
-            padding-bottom: 5px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards 0.5s;
-        }
+    header h1 {
+      font-size: 28px;
+      background: linear-gradient(45deg, #00ffff, #00ff88);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: floatTitle 2s ease-in-out infinite alternate;
+    }
 
-        h3 {
-            font-size: 1.5rem;
-            margin-top: 20px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards 1s;
-        }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
 
-        section {
-            margin: 20px 40px;
-        }
+    nav a:hover {
+      color: #00ffff;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    @keyframes floatTitle {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(5px); }
+    }
 
-        .intro {
-            text-align: center;
-        }
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px 40px 60px 40px;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
 
-        .feature-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards 1.5s;
-        }
+    section.active {
+      opacity: 1;
+    }
 
-        .feature-item {
-            background-color: #1E1E1E;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 40px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-        .feature-item:hover {
-            transform: scale(1.05);
-        }
+    h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #00ffff;
+    }
 
-        .feature-item h4 {
-            color: #FFD700;
-        }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
 
-        .feature-item p {
-            color: #E0E0E0;
-            font-size: 1rem;
-        }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #888;
+    }
 
-        nav {
-            background-color: #1E1E1E;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards 0.2s;
-        }
-
-        nav a {
-            color: #FFD700;
-            margin: 0 15px;
-            font-size: 1.2rem;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-            animation: pulse 1s infinite;
-        }
-
-        footer {
-            background-color: #121212;
-            color: #e0e0e0;
-            padding: 20px;
-            text-align: center;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards 2s;
-        }
-
-        .highlight {
-            background-color: #333;
-            padding: 10px;
-            border-radius: 4px;
-            font-family: monospace;
-            color: #FFD700;
-        }
-
-        .code-snippet {
-            background-color: #1C1C1C;
-            color: #E0E0E0;
-            padding: 20px;
-            border-radius: 8px;
-            font-size: 1rem;
-            overflow-x: auto;
-            margin-top: 20px;
-        }
-
-        .code-snippet code {
-            color: #FFD700;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700;
-            }
-
-            50% {
-                text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
-            }
-
-            100% {
-                text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700;
-            }
-        }
-    </style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
-
 <body>
-
+  <header>
+    <h1>NovaXP</h1>
     <nav>
-        <a href="#home">Home</a>
-        <a href="#features">Features</a>
-        <a href="#installation">Installation</a>
-        <a href="#support">Support</a>
-        <a href="#contribute">Contribute</a>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#download">Download</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </header>
 
-    <section id="home">
-        <header class="intro">
-            <div class="container">
-                <h1>NovaXP OS - The Future of Operating Systems</h1>
-                <p>Your new favorite operating system designed with speed, style, and ease of use.</p>
-            </div>
-        </header>
-    </section>
+  <section id="about" class="glass">
+    <h2>About NovaXP</h2>
+    <p>NovaXP is the future of desktop operating systems. Lightning-fast, ultra-customizable, and built with love for power users. It's a full reimagining of the classic OS experience, blending vintage XP charm with next-gen tech.</p>
+  </section>
 
-    <section id="features">
-        <div class="container">
-            <h2>Key Features</h2>
-            <div class="feature-list">
-                <div class="feature-item">
-                    <h4>Modern User Interface</h4>
-                    <p>With a sleek, Windows XP-inspired theme, NovaXP offers an immersive and intuitive interface.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>Draggable Windows</h4>
-                    <p>Enjoy the flexibility of dragging windows across your screen, just like the classic desktop experience.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>Taskbar with App Management</h4>
-                    <p>Easily manage your open applications with a taskbar that supports app reopening and system notifications.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>File Explorer</h4>
-                    <p>Explore and manage files effortlessly with a modern and responsive file manager integrated into the OS.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section id="features" class="glass">
+    <h2>Features</h2>
+    <ul>
+      <li>🚀 Blazing fast performance</li>
+      <li>🌈 Full theming and customization</li>
+      <li>🖼️ Glass-style UI</li>
+      <li>🛠️ Built-in app store</li>
+      <li>🔒 User accounts and secure login</li>
+      <li>💾 File manager with drag & drop</li>
+      <li>🎮 Game mode for max performance</li>
+    </ul>
+  </section>
 
-    <section id="installation">
-        <div class="container">
-            <h2>Installation Guide</h2>
-            <p>Follow these steps to install NovaXP OS on your system:</p>
-            <ul>
-                <li>Download the installer from the official <a href="#">GitHub page</a>.</li>
-                <li>Run the setup and follow the on-screen instructions.</li>
-                <li>Choose your desired partition and wait for the installation to complete.</li>
-                <li>After installation, reboot and enjoy your new NovaXP experience!</li>
-            </ul>
-            <h3>System Requirements</h3>
-            <ul>
-                <li>CPU: 1 GHz or higher</li>
-                <li>RAM: 2 GB or higher</li>
-                <li>Storage: 5 GB free space</li>
-                <li>Graphics: Compatible with modern GPUs</li>
-            </ul>
-        </div>
-    </section>
+  <section id="download" class="glass">
+    <h2>Download</h2>
+    <p>Get NovaXP today and transform your PC. The installer is small, fast, and beautifully designed. <br /><br /><strong>[Download Button Placeholder]</strong></p>
+  </section>
 
-    <section id="support">
-        <div class="container">
-            <h2>Support</h2>
-            <p>If you run into any issues with NovaXP OS, here are some solutions:</p>
-            <h3>Troubleshooting</h3>
-            <ul>
-                <li><strong>Installation Failed:</strong> Ensure your system meets the minimum requirements and try again.</li>
-                <li><strong>File Explorer Not Responding:</strong> Restart the OS and try opening File Explorer again.</li>
-                <li><strong>Performance Issues:</strong> Close any unnecessary applications to free up system resources.</li>
-            </ul>
-            <p>For further assistance, reach out on our <a href="#">Support Forum</a>.</p>
-        </div>
-    </section>
+  <section id="contact" class="glass">
+    <h2>Contact</h2>
+    <p>Have feedback or want to contribute? Reach out to us on GitHub or send us a message at <strong>devs@novaxp.com</strong>.</p>
+  </section>
 
-    <section id="contribute">
-        <div class="container">
-            <h2>Contribute</h2>
-            <p>NovaXP OS is open-source! We welcome contributions from developers and enthusiasts. Here's how you can get involved:</p>
-            <h3>How to Contribute</h3>
-            <ol>
-                <li>Fork the repository on <a href="https://github.com/YourUsername/NovaXP">GitHub</a>.</li>
-                <li>Make your changes and improvements.</li>
-                <li>Submit a pull request with a clear description of your changes.</li>
-            </ol>
-            <h3>Contribution Guidelines</h3>
-            <ul>
-                <li>Ensure your code follows the existing style guide.</li>
-                <li>Test all new features thoroughly before submitting your pull request.</li>
-                <li>Respect the work of others and contribute constructively.</li>
-            </ul>
-        </div>
-    </section>
+  <footer>
+    Made with 💙 by the NovaXP Team
+  </footer>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 NovaXP OS. All rights reserved.</p>
-            <p>Visit our <a href="https://github.com/YourUsername/NovaXP">GitHub Repository</a> for more details.</p>
-        </div>
-    </footer>
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
 
+    sections.forEach(section => observer.observe(section));
+  </script>
 </body>
-
 </html>
