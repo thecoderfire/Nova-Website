@@ -54,11 +54,32 @@
       display: block;
       margin-top: 10px;
     }
+    /* Nova XP UI */
+    .nova-ui {
+      display: none;
+      text-align: center;
+    }
+    .nova-ui h1 {
+      color: white;
+    }
+    .btn-logout {
+      background-color: #FF6347;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn-logout:hover {
+      background-color: #e55a46;
+    }
   </style>
 </head>
 <body>
 
-  <div class="form-container">
+  <!-- Login/Register Form -->
+  <div class="form-container" id="authFormContainer">
     <h2 id="formTitle">Login to Nova XP</h2>
     <form id="authForm">
       <input type="text" id="username" placeholder="Username" required>
@@ -68,6 +89,13 @@
     <p class="switch-link">
       Don't have an account? <a href="javascript:void(0)" onclick="showRegisterForm()">Register here</a>
     </p>
+  </div>
+
+  <!-- Nova XP UI -->
+  <div class="nova-ui" id="novaUiContainer">
+    <h1>Welcome to Nova XP</h1>
+    <p>Hello, <strong id="welcomeUser"></strong>!</p>
+    <button class="btn-logout" onclick="logout()">Logout</button>
   </div>
 
   <script>
@@ -113,15 +141,34 @@
 
       if (storedPassword === password) {
         localStorage.setItem('loggedInUser', username); // Store logged in user
-        window.location.href = "nova_xp_ui.html"; // Redirect to Nova XP UI
+        showNovaXPUI(username); // Show Nova XP UI
       } else {
         alert("Invalid credentials. Please try again.");
       }
     }
 
+    // Show Nova XP UI
+    function showNovaXPUI(username) {
+      // Hide login/register form
+      document.getElementById('authFormContainer').style.display = 'none';
+      // Show Nova XP UI
+      document.getElementById('novaUiContainer').style.display = 'block';
+      // Set welcome username
+      document.getElementById('welcomeUser').textContent = username;
+    }
+
     // Check if already logged in
-    if (localStorage.getItem('loggedInUser')) {
-      window.location.href = "nova_xp_ui.html"; // If logged in, redirect directly
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+      showNovaXPUI(loggedInUser); // If logged in, show Nova XP UI directly
+    }
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem('loggedInUser');
+      // Show login/register form again
+      document.getElementById('authFormContainer').style.display = 'block';
+      document.getElementById('novaUiContainer').style.display = 'none';
     }
   </script>
 
