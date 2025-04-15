@@ -3,74 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova XP - Login & Register</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Nova XP - Login / Register</title>
   <style>
     body {
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #282c34;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-container {
+      background-color: #333;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #444;
+      background-color: #555;
+      color: white;
+    }
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .switch-link {
+      color: #4CAF50;
+      text-align: center;
+      display: block;
+      margin-top: 10px;
     }
   </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
+<body>
 
-  <div class="max-w-lg w-full bg-white rounded-lg shadow-lg p-8">
-    <!-- Login Form -->
-    <div class="text-center">
-      <h2 class="text-4xl font-semibold text-blue-700 mb-6">Nova XP</h2>
-      <p class="text-gray-500 mb-6">Log in to your account</p>
-
-      <!-- Login Form -->
-      <form id="loginForm">
-        <div class="mb-4">
-          <input type="email" id="loginEmail" placeholder="Email Address" class="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
-        </div>
-        <div class="mb-6">
-          <input type="password" id="loginPassword" placeholder="Password" class="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
-        </div>
-        <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">Log In</button>
-      </form>
-
-      <p class="mt-4 text-sm text-gray-500">
-        Don't have an account? <a href="javascript:void(0)" onclick="showRegisterForm()" class="text-blue-600 hover:underline">Register here</a>
-      </p>
-    </div>
-
-    <!-- Registration Form (Hidden by default) -->
-    <div id="registerForm" class="hidden mt-8">
-      <h3 class="text-2xl text-blue-700 mb-4 text-center">Create your account</h3>
-
-      <form>
-        <div class="mb-4">
-          <input type="text" id="registerUsername" placeholder="Username" class="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
-        </div>
-        <div class="mb-4">
-          <input type="email" id="registerEmail" placeholder="Email Address" class="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
-        </div>
-        <div class="mb-6">
-          <input type="password" id="registerPassword" placeholder="Password" class="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
-        </div>
-        <button type="submit" class="w-full py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-300">Register</button>
-      </form>
-
-      <p class="mt-4 text-sm text-gray-500">
-        Already have an account? <a href="javascript:void(0)" onclick="showLoginForm()" class="text-blue-600 hover:underline">Log in here</a>
-      </p>
-    </div>
+  <div class="form-container">
+    <h2 id="formTitle">Login to Nova XP</h2>
+    <form id="authForm">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <p class="switch-link">
+      Don't have an account? <a href="javascript:void(0)" onclick="showRegisterForm()">Register here</a>
+    </p>
   </div>
 
   <script>
-    // Toggle between Login and Registration forms
+    // Function to show the registration form
     function showRegisterForm() {
-      document.getElementById("registerForm").classList.remove("hidden");
-      document.getElementById("loginForm").classList.add("hidden");
+      document.getElementById('formTitle').textContent = "Register for Nova XP";
+      const authForm = document.getElementById('authForm');
+      authForm.querySelector('button').textContent = 'Register';
+      authForm.onsubmit = registerUser; // Switch form action to registration
     }
 
+    // Handle user registration
+    function registerUser(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (localStorage.getItem(username)) {
+        alert("User already exists! Please log in.");
+        return;
+      }
+
+      localStorage.setItem(username, password);
+      alert("Registration successful! You can now log in.");
+      showLoginForm();
+    }
+
+    // Show login form
     function showLoginForm() {
-      document.getElementById("loginForm").classList.remove("hidden");
-      document.getElementById("registerForm").classList.add("hidden");
+      document.getElementById('formTitle').textContent = "Login to Nova XP";
+      const authForm = document.getElementById('authForm');
+      authForm.querySelector('button').textContent = 'Login';
+      authForm.onsubmit = loginUser; // Switch form action to login
+    }
+
+    // Handle user login
+    function loginUser(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const storedPassword = localStorage.getItem(username);
+
+      if (storedPassword === password) {
+        localStorage.setItem('loggedInUser', username); // Store logged in user
+        window.location.href = "nova_xp_ui.html"; // Redirect to Nova XP UI
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    }
+
+    // Check if already logged in
+    if (localStorage.getItem('loggedInUser')) {
+      window.location.href = "nova_xp_ui.html"; // If logged in, redirect directly
     }
   </script>
-  
+
 </body>
 </html>
